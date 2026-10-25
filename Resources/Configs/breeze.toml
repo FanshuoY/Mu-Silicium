@@ -1,0 +1,38 @@
+#
+# Device Status
+#
+# NOTE: Ace 2 Pro is a single-model device (PJX110).
+# If you later find a second SKU, bump this and add a DEVICE_MODEL branch in breeze.dsc.
+[status]
+model_count = 1
+
+#
+# Boot Shim Configs
+#
+[boot_shim]
+requires_kernel_header = true
+
+#
+# UEFI FD Configs
+#
+# size CONFIRMED from stock uefi_a (FV length = 0x300000).
+# base: stock firmware FV sits at 0xA7000000; aston template uses 0xA7100000.
+# Keep aston value until the BootShim load path is confirmed (see README).
+[uefi_fd]
+base = 0xA7100000
+size = 0x300000
+
+#
+# Android Boot Image Kernel Configs
+#
+[boot_image_kernel]
+kernel_compression = "gzip"
+append_dtb         = true
+
+#
+# Android Boot Image Configs
+#
+[boot_image]
+header_version = 4
+os_version = "16.0.0"
+os_patch_level = "2026-06"
